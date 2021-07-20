@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+@import "~antd/dist/antd.css";
+/* 
+general 
+*/
+body {
+	font-size: 16px;
+	line-height: 1.6;
+	color: #333;
+	overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container-fluid {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 0 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-layout {
+	background: #f7f8fc !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.mainLayout .ant-layout-header {
+	background: #fff;
+	width: 100%;
+	z-index: 1;
+	box-shadow: 0 4px 6px fade(#000, 5);
+	position: relative;
+	top: 0;
 }
 
-.App-link {
-  color: #61dafb;
+p {
+	font-size: 16px;
+	line-height: 1.6;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bgGray {
+	background: #fafafa;
+}
+
+.titleHolder {
+	position: relative;
+	padding: 0 0 20px;
+}
+
+/* 
+block
+*/
+.block {
+	padding: 40px 0;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+/*
+Header
+*/
+.ant-layout-header {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 999;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header .logo {
+	font-size: 22px;
+	font-weight: 400;
+}
+
+.header .logo .fas {
+	color: #1890ff;
+	margin: 0 10px 0 0;
+	font-size: 28px;
+}
+
+.header .logo a {
+	text-decoration: none;
+	color: #333;
+}
+
+/*
+CasesDisplay
+*/
+.casesDisplay {
+	text-align: center;
+	border-radius: 8px;
+}
+
+/*
+CountrySelector
+*/
+.selectCountry .option {
+	font-size: 16px;
+}
+
+/*
+CountryData
+*/
+.countryData {
+  margin-top: 6px;
+}
+.countryData p {
+  font-size: 0.6rem;
+}
+
+.countryData .content {
+	display: flex;
+	flex-direction: row;
+  margin-top: 20px;
+}
+
+.countryData .icon {
+  width: 15%;
+	margin: auto 10px auto 0px;
+}
+
+.countryData .fas {
+	font-size: 1.4rem;
+}
+
+.countryData .number h3 {
+	margin: 0;
+}
+
+.countryData .number p {
+	margin: 0;
+}
+
+
+/*
+Footer
+*/
+.ant-layout-footer {
+	background: #3a3f44 !important;
+	color: #fafafa !important;
+	padding: 40px 0 !important;
+	text-align: center;
 }
