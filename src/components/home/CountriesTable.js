@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "antd";
 import ReactCountryFlag from "react-country-flag";
+import { COLORS } from "../../constaints/colors";
 
 const columns = [
 	{
@@ -21,6 +22,7 @@ const columns = [
 				{country.name}
 			</div>
 		),
+		fixed: "left",
 	},
 	{
 		title: "Active cases",
@@ -29,6 +31,11 @@ const columns = [
 			compare: (a, b) => a.activeCases - b.activeCases,
 		},
 		width: "10%",
+		align: "right",
+		render: (text) => (
+			<div style={{ color: COLORS.orange }}>{text.toLocaleString()}</div>
+		),
+    responsive: ["sm"]
 	},
 	{
 		title: "Total cases",
@@ -37,6 +44,9 @@ const columns = [
 			compare: (a, b) => a.totalCases - b.totalCases,
 		},
 		width: "10%",
+		align: "right",
+		defaultSortOrder: "descend",
+		render: (text) => <div>{text.toLocaleString()}</div>,
 	},
 	{
 		title: "New Cases",
@@ -45,7 +55,11 @@ const columns = [
 			compare: (a, b) => a.newCases - b.newCases,
 		},
 		width: "10%",
-		render: (text) => <div style={{ color: "orange" }}>{text}</div>,
+		align: "right",
+		render: (text) => (
+			<div style={{ color: COLORS.primary }}>{text.toLocaleString()}</div>
+		),
+		responsive: ["md"],
 	},
 	{
 		title: "Total recovered",
@@ -54,6 +68,8 @@ const columns = [
 			compare: (a, b) => a.recovered - b.recovered,
 		},
 		width: "10%",
+		align: "right",
+		render: (text) => <div>{text.toLocaleString()}</div>,
 	},
 	{
 		title: "New Recovered",
@@ -62,7 +78,11 @@ const columns = [
 			compare: (a, b) => a.newRecovered - b.newRecovered,
 		},
 		width: "10%",
-		render: (text) => <div style={{ color: "#12CA5B" }}>{text}</div>,
+		align: "right",
+		render: (text) => (
+			<div style={{ color: COLORS.green }}>{text.toLocaleString()}</div>
+		),
+		responsive: ["md"],
 	},
 	{
 		title: "Total deaths",
@@ -71,6 +91,8 @@ const columns = [
 			compare: (a, b) => a.deaths - b.deaths,
 		},
 		width: "10%",
+		align: "right",
+		render: (text) => <div>{text.toLocaleString()}</div>,
 	},
 	{
 		title: "New deaths",
@@ -79,58 +101,41 @@ const columns = [
 			compare: (a, b) => a.newDeaths - b.newDeaths,
 		},
 		width: "10%",
+		align: "right",
+		render: (text) => (
+			<div style={{ color: COLORS.dark }}>{text.toLocaleString()}</div>
+		),
+		responsive: ["md"],
 	},
 ];
 
-const data = [
-	{
-		key: "1",
-		country: {
-			name: "China",
-			code: "US",
-		},
-		activeCases: "123,128,123",
-		totalCases: 98,
-		newCases: 60,
-		recovered: 70,
-		newRecovered: 10,
-		deaths: 10,
-		newDeaths: 1,
-	},
-	{
-		key: "2",
-		country: {
-			name: "China",
-			code: "US",
-		},
-		activeCases: "123,128,123",
-		totalCases: 98,
-		newCases: 60,
-		recovered: 70,
-		newRecovered: 10,
-		deaths: 10,
-		newDeaths: 1,
-	},
-	{
-		key: "3",
-		country: {
-			name: "China",
-			code: "US",
-		},
-		activeCases: "123,128,123",
-		totalCases: 98,
-		newCases: 60,
-		recovered: 70,
-		newRecovered: 10,
-		deaths: 10,
-		newDeaths: 1,
-	},
-];
-
-export default function CountriesTable() {
+export default function CountriesTable({ data }) {
+	const [dataSource, setDataSource] = useState([]);
+	useEffect(() => {
+		const tmp = [];
+		data.forEach((element) => {
+			if (element.countryInfo.iso2) {
+				tmp.push({
+					key: element.countryInfo._id,
+					country: {
+						name: element.country,
+						code: element.countryInfo.iso2,
+					},
+					activeCases: element.cases - element.deaths - element.recovered,
+					totalCases: element.cases,
+					newCases: element.todayCases,
+					recovered: element.recovered,
+					newRecovered: element.todayRecovered,
+					deaths: element.deaths,
+					newDeaths: element.todayDeaths,
+				});
+			}
+		});
+		setDataSource(tmp);
+	}, [data]);
 	return (
 		<div>
-			<Table columns={columns} dataSource={data} />
+			<Table columns={columns} dataSource={dataSource}></Table>
 		</div>
 	);
 }

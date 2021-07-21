@@ -1,4 +1,30 @@
 @import "~antd/dist/antd.css";
+:root {
+	--primary: #ea5569;
+	--green: #12ca5b;
+	--blue: #1890ff;
+	--orange: #fa8c16;
+	--gray: #514d66;
+	--gray2: #968ebe;
+	--dark: #403f63;
+	--dark2: #51507c;
+}
+
+.primary {
+	color: var(--primary);
+}
+.orange {
+	color: var(--orange);
+}
+.green {
+	color: var(--green);
+}
+.dark {
+	color: var(--dark);
+}
+.dark2 {
+	color: var(--dark2);
+}
 /* 
 general 
 */
@@ -19,13 +45,21 @@ body {
 	background: #f7f8fc !important;
 }
 
+.ant-card {
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
 .mainLayout .ant-layout-header {
 	background: #fff;
 	width: 100%;
-	z-index: 1;
-	box-shadow: 0 4px 6px fade(#000, 5);
-	position: relative;
+	z-index: 1000;
+	box-shadow: rgb(0, 0, 0, 0.05) 0 8px 24px -2px;
+	position: fixed;
 	top: 0;
+}
+
+.ant-layout-content {
+	padding-top: 60px;
 }
 
 p {
@@ -47,7 +81,6 @@ block
 */
 .block {
 	padding: 40px 0;
-	border-bottom: 1px solid #d9d9d9;
 }
 
 /*
@@ -71,10 +104,9 @@ Header
 	font-weight: 400;
 }
 
-.header .logo .fas {
-	color: #1890ff;
-	margin: 0 10px 0 0;
-	font-size: 28px;
+.header .logo img {
+	margin-right: 10px;
+	vertical-align: sub;
 }
 
 .header .logo a {
@@ -89,7 +121,14 @@ CasesDisplay
 	text-align: center;
 	border-radius: 8px;
 }
-
+.casesDisplay p {
+	margin: 0px;
+}
+.casesDisplay h2 {
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin: 10px 0px 0px 0px;
+}
 /*
 CountrySelector
 */
@@ -101,35 +140,39 @@ CountrySelector
 CountryData
 */
 .countryData {
-  margin-top: 6px;
+	margin-top: 6px;
 }
 .countryData p {
-  font-size: 0.6rem;
+	font-size: 0.6rem;
+	color: var(--gray2);
 }
 
 .countryData .content {
 	display: flex;
 	flex-direction: row;
-  margin-top: 20px;
+	margin-top: 20px;
 }
 
 .countryData .icon {
-  width: 15%;
+	width: 15%;
 	margin: auto 10px auto 0px;
 }
 
 .countryData .fas {
 	font-size: 1.4rem;
+	color: var(--dark2);
 }
 
-.countryData .number h3 {
-	margin: 0;
+.countryData h3 {
+	font-size: 0.9rem;
+	font-weight: bold;
+	margin: 0px;
 }
 
-.countryData .number p {
-	margin: 0;
+.countryData p {
+	color: var(--gray2);
+	margin: 0px;
 }
-
 
 /*
 Footer
