@@ -49,13 +49,16 @@ body {
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.mainLayout .ant-layout-header {
+.ant-layout-header {
 	background: #fff;
 	width: 100%;
-	z-index: 1000;
 	box-shadow: rgb(0, 0, 0, 0.05) 0 8px 24px -2px;
 	position: fixed;
 	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	padding: 0px !important;
 }
 
 .ant-layout-content {
@@ -86,13 +89,6 @@ block
 /*
 Header
 */
-.ant-layout-header {
-	position: fixed;
-	left: 0;
-	right: 0;
-	z-index: 999;
-}
-
 .header {
 	display: flex;
 	justify-content: space-between;
@@ -164,7 +160,7 @@ CountryData
 }
 
 .countryData h3 {
-	font-size: 0.9rem;
+	font-size: 1.2rem;
 	font-weight: bold;
 	margin: 0px;
 }
@@ -172,6 +168,10 @@ CountryData
 .countryData p {
 	color: var(--gray2);
 	margin: 0px;
+}
+
+.viewSelector {
+	display: flex;
 }
 
 /*

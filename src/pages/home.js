@@ -10,6 +10,7 @@ import {
 	getCountryHistoricalData,
 } from "../apis";
 import { COUNTRIES } from "../constaints/countries";
+import ViewSelector from "../components/home/ViewSelector";
 import CountryChart from "../components/home/CountryChart";
 
 export default function AppHome() {
@@ -17,6 +18,7 @@ export default function AppHome() {
 	const [data, setData] = useState([]);
 	const [globalData, setGlobalData] = useState([]);
 	const [historicData, setHistoricData] = useState({});
+	const [optionView, setOptionView] = useState("");
 	const fetchCountryData = (selectedCountry) => {
 		const country = COUNTRIES.find(
 			(country) => country.name === selectedCountry
@@ -39,6 +41,9 @@ export default function AppHome() {
 	const handleChange = (key) => {
 		setSelectedCountry(key);
 	};
+	const handleChangeOption = (e) => {
+		setOptionView(e.target.value);
+	};
 
 	useEffect(() => {
 		fetchCountryData(selectedCountry);
@@ -55,8 +60,16 @@ export default function AppHome() {
 		<div className="container-fluid">
 			<CasesDisplay />
 			<div className="block">
+				<div className="titleHolder">
+					<h1>Country statistics</h1>
+				</div>
 				<Row gutter={[16, 16]}>
-					<Col span={6}>
+					<Col
+						style={{ margin: "auto" }}
+						xs={{ span: 24 }}
+						sm={{ span: 12 }}
+						lg={{ span: 6 }}
+					>
 						<Card>
 							<CountrySelector
 								selectedCountry={selectedCountry}
@@ -65,9 +78,13 @@ export default function AppHome() {
 							<CountryData data={data} />
 						</Card>
 					</Col>
-					<Col span={18}>
+					<Col xs={{ span: 24 }} lg={{ span: 18 }}>
 						<Card>
-							<CountryChart historicData={historicData} />
+							<ViewSelector handleChangeOption={handleChangeOption} />
+							<CountryChart
+								historicData={historicData}
+								optionView={optionView}
+							/>
 						</Card>
 					</Col>
 				</Row>

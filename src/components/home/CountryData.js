@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 
 export default function CountryData({ data }) {
@@ -5,6 +6,7 @@ export default function CountryData({ data }) {
 
 	useEffect(() => {
 		if (data) {
+			console.log(data);
 			setDataDisplay([
 				{
 					key: "1",
@@ -40,7 +42,7 @@ export default function CountryData({ data }) {
 
 	return (
 		<div className="countryData">
-			<p>Updated 15 mins ago</p>
+			<p>{"Updated on " + moment.utc().format("DD/MM/YYYY")}</p>
 			{dataDisplay.map((item) => {
 				return (
 					<div key={item.key} className="content">

@@ -55,7 +55,12 @@ export default function CasesDisplay() {
 			<Row gutter={[16, 16]}>
 				{data.map((item) => {
 					return (
-						<Col span={6} key={item.key}>
+						<Col
+							xs={{ span: 24 }}
+							sm={{ span: 12 }}
+							lg={{ span: 6 }}
+							key={item.key}
+						>
 							<Card className="casesDisplay">
 								<h3>{item.title}</h3>
 								<h2 className={item.color}>{item.num.toLocaleString()}</h2>
