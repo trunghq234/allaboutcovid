@@ -36,7 +36,6 @@ const columns = [
 		render: (text) => (
 			<div style={{ color: COLORS.orange }}>{text.toLocaleString()}</div>
 		),
-		// responsive: ["sm"],
 	},
 	{
 		title: "Total cases",
@@ -60,7 +59,6 @@ const columns = [
 		render: (text) => (
 			<div style={{ color: COLORS.primary }}>{text.toLocaleString()}</div>
 		),
-		// responsive: ["md"],
 	},
 	{
 		title: "Total recovered",
@@ -83,7 +81,6 @@ const columns = [
 		render: (text) => (
 			<div style={{ color: COLORS.green }}>{text.toLocaleString()}</div>
 		),
-		// responsive: ["md"],
 	},
 	{
 		title: "Total deaths",
@@ -106,7 +103,6 @@ const columns = [
 		render: (text) => (
 			<div style={{ color: COLORS.dark }}>{text.toLocaleString()}</div>
 		),
-		// responsive: ["md"],
 	},
 ];
 
@@ -139,11 +135,7 @@ export default function CountriesTable({ data }) {
 			<div className="titleHolder">
 				<h1>All countries statistics</h1>
 			</div>
-			<Table
-				columns={columns}
-				dataSource={dataSource}
-				scroll={{ x: 900 }}
-			></Table>
+			<Table columns={columns} dataSource={dataSource} scroll={{ x: 900 }} />
 		</div>
 	);
 }

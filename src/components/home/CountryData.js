@@ -6,7 +6,6 @@ export default function CountryData({ data }) {
 
 	useEffect(() => {
 		if (data) {
-			console.log(data);
 			setDataDisplay([
 				{
 					key: "1",

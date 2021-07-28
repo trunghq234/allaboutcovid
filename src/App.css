@@ -79,6 +79,10 @@ p {
 	padding: 0 0 20px;
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
 /* 
 block
 */
@@ -108,6 +112,7 @@ Header
 .header .logo a {
 	text-decoration: none;
 	color: #333;
+  font-weight: 500;
 }
 
 /*

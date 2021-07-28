@@ -57,12 +57,6 @@ export default function CountryChart({ historicData, optionView }) {
 		xField: "date",
 		yField: "value",
 		seriesField: "category",
-		// xAxis: {
-		// 	title: {
-		// 		text: "",
-		// 		style: { fontSize: 16 },
-		// 	},
-		// },
 		yAxis: {
 			label: {
 				formatter: function formatter(v) {
