@@ -1,18 +1,29 @@
 import axios from "axios";
-import { PROVINCES_CASES, VIETNAM_CASES } from "../constaints/sources";
+import {
+	HCM_CASES,
+	PROVINCES_CASES,
+	VIETNAM_CASES,
+	VNEXPRESS_NEWS,
+	GLOBAL_REPORT,
+	COUNTRY_DATA,
+	HISTORICAL_DATA,
+	COUNTRIES_DATA,
+} from "../constaints/sources";
 
-export const getGlobalReport = () =>
-	axios.get("https://disease.sh/v3/covid-19/all");
+export const getGlobalReport = () => axios.get(GLOBAL_REPORT);
 
 export const getCountryData = (country) =>
-	axios.get(`https://disease.sh/v3/covid-19/countries/${country}`);
+	axios.get(`${COUNTRY_DATA}${country}`);
 
 export const getCountryHistoricalData = (country) =>
-	axios.get(`https://api.covid19api.com/dayone/country/${country}`);
+	axios.get(`${HISTORICAL_DATA}${country}`);
 
-export const getAllCountriesData = () =>
-	axios.get("https://disease.sh/v3/covid-19/countries?sort=cases");
+export const getAllCountriesData = () => axios.get(COUNTRIES_DATA);
 
 export const getVietNamCases = () => axios.get(VIETNAM_CASES);
 
 export const getProvincesData = () => axios.get(PROVINCES_CASES);
+
+export const getHCMCases = () => axios.get(HCM_CASES);
+
+export const getNews = () => axios.get(VNEXPRESS_NEWS);

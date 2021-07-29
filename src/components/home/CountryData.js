@@ -41,7 +41,9 @@ export default function CountryData({ data }) {
 
 	return (
 		<div className="countryData">
-			<p>{"Updated on " + moment.utc().format("DD/MM/YYYY")}</p>
+			<p className="lastUpdated">
+				{"Updated on " + moment.utc().format("DD/MM/YYYY")}
+			</p>
 			{dataDisplay.map((item) => {
 				return (
 					<div key={item.key} className="content">

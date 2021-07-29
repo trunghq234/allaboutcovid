@@ -2,7 +2,7 @@ import "./App.css";
 import "antd/dist/antd.css";
 import React from "react";
 import { Layout } from "antd";
-import AppHome from "./pages/home";
+import AppWorld from "./pages/home";
 import VietNam from "./pages/vietnam";
 import Vaccine from "./pages/vaccine";
 import AppNews from "./pages/news";
@@ -22,7 +22,7 @@ function App() {
 				<Switch>
 					<Route exact path="/">
 						<Content>
-							<AppHome />
+							<AppWorld />
 						</Content>
 					</Route>
 					<Route exact path="/vietnam">

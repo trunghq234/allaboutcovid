@@ -47,6 +47,7 @@ body {
 
 .ant-card {
 	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	border-radius: 6px;
 }
 
 .ant-layout-header {
@@ -65,6 +66,10 @@ body {
 	padding-top: 60px;
 }
 
+.ant-layout-footer {
+	margin-top: 40px;
+}
+
 p {
 	font-size: 16px;
 	line-height: 1.6;
@@ -80,14 +85,25 @@ p {
 }
 
 .flex {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
+}
+
+.lastUpdated {
+	font-size: 0.6rem;
+	font-weight: 700;
+	color: var(--gray2);
+}
+
+img {
+	border-radius: 8px;
+	object-fit: cover;
 }
 /* 
 block
 */
 .block {
-	padding: 40px 0;
+	padding: 20px 0;
 }
 
 /*
@@ -112,7 +128,7 @@ Header
 .header .logo a {
 	text-decoration: none;
 	color: #333;
-  font-weight: 500;
+	font-weight: 500;
 }
 
 /*
@@ -143,10 +159,6 @@ CountryData
 .countryData {
 	margin-top: 6px;
 }
-.countryData p {
-	font-size: 0.6rem;
-	color: var(--gray2);
-}
 
 .countryData .content {
 	display: flex;
@@ -165,7 +177,7 @@ CountryData
 }
 
 .countryData h3 {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: bold;
 	margin: 0px;
 }
@@ -187,4 +199,29 @@ Footer
 	color: #fafafa !important;
 	padding: 40px 0 !important;
 	text-align: center;
+}
+
+/*
+Card
+*/
+
+.cardContent {
+	display: flex;
+}
+
+.contentCard {
+	margin-left: 20px;
+}
+
+.contentCard h1 {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--dark);
+}
+
+.contentCard h3 {
+	line-height: 1.2rem;
+	font-weight: 400;
+	font-size: 0.9rem;
+	color: var(--dark2);
 }

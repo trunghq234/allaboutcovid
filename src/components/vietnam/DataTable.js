@@ -37,8 +37,9 @@ export default function DataTable({ data }) {
 	const [dataSource, setDataSource] = useState([]);
 	useEffect(() => {
 		const tmp = [];
-		data.forEach((element) => {
+		data.forEach((element, index) => {
 			tmp.push({
+				key: index,
 				province: element.x,
 				total: element.z,
 				today: element.y,

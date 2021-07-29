@@ -10,10 +10,15 @@ export default function AppHeader() {
 				<div className="logo">
 					<a href="/">
 						<img src={logo} alt="" style={{ width: "32px" }} />
-						All about Covid
+						All about COVID
 					</a>
 				</div>
-				<Menu style={{ minWidth: "340px" }} theme="light" mode="horizontal">
+				<Menu
+					defaultSelectedKeys={["1"]}
+					style={{ minWidth: "340px" }}
+					theme="light"
+					mode="horizontal"
+				>
 					<Menu.Item key="1">
 						<Link to="/">World</Link>
 					</Menu.Item>

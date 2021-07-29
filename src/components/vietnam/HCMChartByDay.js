@@ -3,24 +3,12 @@ import { Line } from "@ant-design/charts";
 import { COLORS } from "../../constaints/colors";
 import moment from "moment";
 
-export default function ChartByDay({ option, data }) {
+export default function HCMChartByDay({ data }) {
 	const [dataSource, setDataSource] = useState([]);
 
 	useEffect(() => {
-		if (Array.isArray(data)) {
-			switch (option) {
-				case "30":
-					generateData(data.slice(Math.max(data.length - 31, 1)));
-					break;
-				case "7":
-					generateData(data.slice(Math.max(data.length - 8, 1)));
-					break;
-				default:
-					generateData(data);
-					break;
-			}
-		}
-	}, [option, data]);
+		generateData(data);
+	}, [data]);
 
 	const generateData = (input) => {
 		const tmp = [];

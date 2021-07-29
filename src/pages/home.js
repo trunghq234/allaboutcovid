@@ -13,7 +13,7 @@ import { COUNTRIES } from "../constaints/countries";
 import ViewSelector from "../components/home/ViewSelector";
 import CountryChart from "../components/home/CountryChart";
 
-export default function AppHome() {
+export default function AppWorld() {
 	const [selectedCountry, setSelectedCountry] = useState("");
 	const [data, setData] = useState([]);
 	const [globalData, setGlobalData] = useState([]);

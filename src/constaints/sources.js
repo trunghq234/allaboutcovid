@@ -1,15 +1,23 @@
+export const HCM_CASES =
+	"https://api.zingnews.vn/public/v2/corona/getChart?loc=hcm";
 
-export const COVID_CASES_HCMC =
-  "https://api.zingnews.vn/public/v2/corona/getChart?loc=hcm";
 export const VIETNAM_CASES =
-  "https://api.zingnews.vn/public/v2/corona/getChart";
+	"https://api.zingnews.vn/public/v2/corona/getChart";
+
 export const PROVINCES_CASES =
-  "https://api.zingnews.vn/public/v2/corona/getChart?type=province";
-export const COVID_VACCINE_VIETNAM =
-  "https://api.zingnews.vn/public/v2/corona/getChart?type=vaccination";
-export const TRIGGER_HOOKS =
-  "https://api.vercel.com/v1/integrations/deploy/prj_jUfPcwKoQ45EuFT97Jja6WFuZzPy/1V1Uhx0wnQ";
+	"https://api.zingnews.vn/public/v2/corona/getChart?type=province";
+
 export const VNEXPRESS_NEWS =
-  "https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=50&page=1&data_select=title,share_url,thumbnail_url,lead,publish_time";
-export const VNEXPRESS_COVID_DATA =
-  "https://vnexpress.net/microservice/sheet/type/covid19_2021_by_day";
+	"https://gw.vnexpress.net/ar/get_rule_2?category_id=1004765&limit=50&page=1&data_select=title,share_url,thumbnail_url,lead,publish_time";
+
+export const VIETNAM_VACCINE =
+	"https://api.zingnews.vn/public/v2/corona/getChart?type=vaccination";
+
+export const GLOBAL_REPORT = "https://disease.sh/v3/covid-19/all";
+
+export const COUNTRY_DATA = "https://disease.sh/v3/covid-19/countries/";
+
+export const HISTORICAL_DATA = "https://api.covid19api.com/dayone/country/";
+
+export const COUNTRIES_DATA =
+	"https://disease.sh/v3/covid-19/countries?sort=cases";

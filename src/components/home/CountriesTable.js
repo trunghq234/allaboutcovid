@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd";
+import { Card, Table } from "antd";
 import ReactCountryFlag from "react-country-flag";
 import { COLORS } from "../../constaints/colors";
 
@@ -135,7 +135,14 @@ export default function CountriesTable({ data }) {
 			<div className="titleHolder">
 				<h1>All countries statistics</h1>
 			</div>
-			<Table columns={columns} dataSource={dataSource} scroll={{ x: 900 }} />
+			<Card>
+				<Table
+					size="middle"
+					columns={columns}
+					dataSource={dataSource}
+					scroll={{ x: 900 }}
+				/>
+			</Card>
 		</div>
 	);
 }
