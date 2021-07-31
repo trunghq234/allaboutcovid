@@ -2,25 +2,31 @@ import React, { useState, useEffect } from "react";
 import { Line } from "@ant-design/charts";
 import { COLORS } from "../../constaints/colors";
 import moment from "moment";
+import ViewSelector from "../home/ViewSelector";
 
-export default function ChartByDay({ option, data }) {
+export default function Chart({ title, data }) {
 	const [dataSource, setDataSource] = useState([]);
+	const [optionView, setOptionView] = useState("");
+
+	const handleChangeOption = (e) => {
+		setOptionView(e.target.value);
+	};
 
 	useEffect(() => {
 		if (Array.isArray(data)) {
-			switch (option) {
+			switch (optionView) {
 				case "30":
-					generateData(data.slice(Math.max(data.length - 31, 1)));
+					generateData(data.slice(Math.max(data.length - 30)));
 					break;
 				case "7":
-					generateData(data.slice(Math.max(data.length - 8, 1)));
+					generateData(data.slice(Math.max(data.length - 7)));
 					break;
 				default:
 					generateData(data);
 					break;
 			}
 		}
-	}, [option, data]);
+	}, [optionView, data]);
 
 	const generateData = (input) => {
 		const tmp = [];
@@ -46,6 +52,18 @@ export default function ChartByDay({ option, data }) {
 				},
 			},
 		},
+		tooltip: {
+			formatter: function formatter(v) {
+				return {
+					name: v.date,
+					value: ""
+						.concat(v.value)
+						.replace(/\d{1,3}(?=(\d{3})+$)/g, function (s) {
+							return "".concat(s, ",");
+						}),
+				};
+			},
+		},
 		height: 478,
 		color: COLORS.orange,
 		legend: { position: "top-left" },
@@ -57,5 +75,13 @@ export default function ChartByDay({ option, data }) {
 			},
 		},
 	};
-	return <Line style={{ paddingTop: "20px" }} {...config} />;
+	return (
+		<div>
+			<div className="flex">
+				<h1>{title}</h1>
+				<ViewSelector handleChangeOption={handleChangeOption} />
+			</div>
+			<Line style={{ paddingTop: "20px" }} {...config} />
+		</div>
+	);
 }

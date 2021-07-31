@@ -66,6 +66,18 @@ export default function CountryChart({ historicData, optionView }) {
 				},
 			},
 		},
+		tooltip: {
+			formatter: function formatter(v) {
+				return {
+					name: v.date,
+					value: ""
+						.concat(v.value)
+						.replace(/\d{1,3}(?=(\d{3})+$)/g, function (s) {
+							return "".concat(s, ",");
+						}),
+				};
+			},
+		},
 		height: 340,
 		color: [COLORS.orange, COLORS.green, COLORS.dark2],
 		legend: { position: "top-left" },

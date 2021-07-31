@@ -6,7 +6,11 @@ export default function AppFooter() {
 			<div className="footer">
 				<div className="copyright">
 					Made by
-					<a target="_blank" href="https://github.com/trunghuynh2304">
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href="https://github.com/trunghuynh2304"
+					>
 						{" "}
 						Trung Huỳnh
 					</a>

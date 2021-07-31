@@ -28,13 +28,13 @@ export default function CountrySelector({ selectedCountry, handleChange }) {
 					{COUNTRIES.map((country) => {
 						return (
 							<Option
-								key={country.code}
+								key={country.iso2}
 								value={country.name}
 								label={country.name}
 							>
 								<div className="option">
 									<ReactCountryFlag
-										countryCode={country.code}
+										countryCode={country.iso2}
 										svg
 										style={{
 											width: "1.2em",

@@ -3,6 +3,7 @@
 	--primary: #ea5569;
 	--green: #12ca5b;
 	--blue: #1890ff;
+	--teal: #2fbeba;
 	--orange: #fa8c16;
 	--gray: #514d66;
 	--gray2: #968ebe;
@@ -18,6 +19,9 @@
 }
 .green {
 	color: var(--green);
+}
+.teal {
+	color: var(--teal);
 }
 .dark {
 	color: var(--dark);
@@ -70,6 +74,11 @@ body {
 	margin-top: 40px;
 }
 
+.ant-tag {
+	margin-right: 0px;
+	align-items: center;
+}
+
 p {
 	font-size: 16px;
 	line-height: 1.6;
@@ -98,6 +107,12 @@ p {
 img {
 	border-radius: 8px;
 	object-fit: cover;
+}
+
+.transperantButton {
+	background-color: transparent;
+	border-width: 0px;
+	cursor: pointer;
 }
 /* 
 block
@@ -224,4 +239,27 @@ Card
 	font-weight: 400;
 	font-size: 0.9rem;
 	color: var(--dark2);
+}
+
+/*
+Vaccine display
+*/
+.vaccineDisplay {
+	text-align: center;
+	border-radius: 8px;
+}
+.vaccineDisplay p {
+	font-size: 1rem;
+	font-weight: 500;
+	margin: 0px;
+}
+.vaccineDisplay h2 {
+	font-size: 1.6rem;
+	font-weight: bold;
+	margin: 10px 0px 0px 0px;
+}
+
+.vaccineDetail {
+	margin-bottom: 0px;
+	margin-left: 10px;
 }

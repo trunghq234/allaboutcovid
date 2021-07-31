@@ -17,7 +17,12 @@ export default function NewsCard({ data }) {
 	return (
 		<Card style={{ marginBottom: "20px" }}>
 			<Skeleton active avatar loading={loading}>
-				<a target="_blank" href={data.share_url} className="cardContent">
+				<a
+					target="_blank"
+					rel="noreferrer"
+					href={data.share_url}
+					className="cardContent"
+				>
 					<img
 						alt={data.title}
 						width={160}

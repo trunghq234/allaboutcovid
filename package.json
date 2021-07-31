@@ -3,6 +3,7 @@
   "description": "An site dedicated to Covid-19",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://disease.sh/v3/covid-19",
   "repository": {
     "type": "git",
     "url": "https://github.com/trunghuynh2304/AllAboutCovid"

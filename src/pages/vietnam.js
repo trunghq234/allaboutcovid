@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { getHCMCases, getProvincesData, getVietNamCases } from "../apis";
+import {
+	getHCMCases,
+	getProvincesData,
+	getVietNamCases,
+	getVietNamVaccine,
+} from "../apis";
 import DataTable from "../components/vietnam/DataTable";
 import { Row, Col, Card, Divider } from "antd";
-import ChartByDay from "../components/vietnam/ChartByDay";
-import ViewSelector from "../components/home/ViewSelector";
-import HCMChart from "../components/vietnam/HCMChart";
-import HCMChartByDay from "../components/vietnam/HCMChartByDay";
+import Chart from "../components/vietnam/Chart";
 import { hourConverter } from "../utils/dataFortmatter";
 import moment from "moment";
+import VaccineDisplay from "../components/vaccine/VaccineDisplay";
+import VNVaccineChart from "../components/vietnam/VNVaccineChart";
 
 export default function VietNam() {
 	// const [cases, setCases] = useState([]);
 	const [casesByDay, setCasesByDay] = useState([]);
 	const [provincesData, setProvincesData] = useState([]);
-	const [optionView, setOptionView] = useState("");
 	const [hcmCases, setHcmCases] = useState([]);
 	const [hcmCasesByDay, setHCMCasesByDay] = useState([]);
 	const [lastUpdated, setLastUpdated] = useState("");
+	const [vaccine, setVaccine] = useState([]);
+	const [vaccineHistory, setVaccineHistory] = useState({});
 
 	const fetchProvincesData = () => {
 		getProvincesData()
@@ -52,15 +57,41 @@ export default function VietNam() {
 			.catch((err) => console.log(err));
 	};
 
+	const fetchVaccine = () => {
+		getVietNamVaccine()
+			.then((res) => {
+				return res.data.data;
+			})
+			.then((res) => {
+				setVaccine([
+					{
+						title: "At least one dose",
+						total: res.first.total,
+						ratio: res.firstRatio,
+						color: "green",
+					},
+					{
+						title: "Fully vaccinated",
+						total: res.second.total,
+						ratio: res.secondRatio,
+						color: "teal",
+					},
+				]);
+				setVaccineHistory({
+					first: res.first.datas,
+					second: res.second.datas,
+				});
+			})
+			.catch((err) => console.log(err));
+	};
+
 	useEffect(() => {
 		fetchProvincesData();
 		fetchCasesByDay();
 		fetchHCMCases();
+		fetchVaccine();
 	}, []);
 
-	const handleChangeOption = (e) => {
-		setOptionView(e.target.value);
-	};
 	return (
 		<div className="container-fluid">
 			{/* <CasesDisplay cases={cases} /> */}
@@ -68,6 +99,7 @@ export default function VietNam() {
 			<Divider style={{ fontSize: "20px", marginTop: "40px" }}>
 				A fourth wave of COVID-19
 			</Divider>
+			<p>{lastUpdated}</p>
 			<div className="block">
 				<div className="titleHolder">
 					<h1>Detail statistics</h1>
@@ -80,11 +112,7 @@ export default function VietNam() {
 					</Col>
 					<Col span={14}>
 						<Card>
-							<div className="flex">
-								<h1>Confirmed cases by day</h1>
-								<ViewSelector handleChangeOption={handleChangeOption} />
-							</div>
-							<ChartByDay option={optionView} data={casesByDay} />
+							<Chart title="Confirmed cases by day" data={casesByDay} />
 						</Card>
 					</Col>
 				</Row>
@@ -96,17 +124,39 @@ export default function VietNam() {
 				<Row gutter={[16, 16]}>
 					<Col span={12}>
 						<Card>
-							<h1>Total cases</h1>
-							<HCMChart data={hcmCases} />
+							<Chart title="Confirmed cases" data={hcmCases} />
 						</Card>
 					</Col>
 					<Col span={12}>
 						<Card>
-							<h1>Confirmed cases by day</h1>
-							<HCMChartByDay data={hcmCasesByDay} />
+							<Chart title="Confirmed cases by day" data={hcmCasesByDay} />
 						</Card>
 					</Col>
 				</Row>
+			</div>
+			<div className="block">
+				<div className="titleHolder">
+					<h1>Vaccine statistics</h1>
+				</div>
+				<VaccineDisplay data={vaccine} />
+				<div style={{ marginTop: "40px" }}>
+					<Row gutter={[16, 16]}>
+						<Col span={12}>
+							<Card>
+								<VNVaccineChart type="all" title="Total" data={vaccineHistory} />
+							</Card>
+						</Col>
+						<Col span={12}>
+							<Card>
+								<VNVaccineChart
+									type="byday"
+									title="By day"
+									data={vaccineHistory}
+								/>
+							</Card>
+						</Col>
+					</Row>
+				</div>
 			</div>
 		</div>
 	);

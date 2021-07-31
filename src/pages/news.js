@@ -9,7 +9,11 @@ export default function AppNews() {
 	const fetchNews = () => {
 		getNews()
 			.then((res) => {
-				setData(res.data.data["1004765"].data);
+				setData(
+					res.data.data["1004765"].data.sort(
+						(first, second) => first.publish_time > second.publish_time
+					)
+				);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -23,7 +27,7 @@ export default function AppNews() {
 			<div className="block">
 				<h1>News</h1>
 				{data.map((item) => {
-					return <NewsCard data={item} />;
+					return <NewsCard key={item.article_id} data={item} />;
 				})}
 			</div>
 		</div>
