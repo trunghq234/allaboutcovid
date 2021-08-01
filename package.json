@@ -3,7 +3,6 @@
   "description": "An site dedicated to Covid-19",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://disease.sh/v3/covid-19",
   "repository": {
     "type": "git",
     "url": "https://github.com/trunghuynh2304/AllAboutCovid"
@@ -14,6 +13,7 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.2.2",
+    "@ant-design/icons": "^4.6.2",
     "antd": "^4.16.7",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -13,15 +13,15 @@ import {
 } from "../constaints/sources";
 import { axiosConfig } from "./config";
 
-export const getGlobalReport = () => axios.get(GLOBAL_REPORT, axiosConfig);
+export const getGlobalReport = () => axios.get(GLOBAL_REPORT);
 
 export const getCountryData = (country) =>
 	axios.get(`${COUNTRY_DATA}${country}`);
 
 export const getCountryHistoricalData = (country) =>
-	axios.get(HISTORICAL_DATA + `${country}`);
+	axios.get(HISTORICAL_DATA + `${country}`, axiosConfig);
 
-export const getAllCountriesData = () => axios.get(COUNTRIES_DATA);
+export const getAllCountriesData = () => axios.get(COUNTRIES_DATA, axiosConfig);
 
 export const getVietNamCases = () => axios.get(VIETNAM_CASES);
 

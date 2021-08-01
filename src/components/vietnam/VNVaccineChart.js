@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Area, Column } from "@ant-design/charts";
+import { Line } from "@ant-design/charts";
 import { COLORS } from "../../constaints/colors";
 import moment from "moment";
 import ViewSelector from "../home/ViewSelector";
 
-export default function VNVaccineChart({ title, data, type }) {
+export default function VNVaccineChart({ title, data }) {
 	const [dataSource, setDataSource] = useState([]);
 	const [optionView, setOptionView] = useState("");
 
@@ -13,46 +13,36 @@ export default function VNVaccineChart({ title, data, type }) {
 	};
 
 	useEffect(() => {
-		if (data.first != null && data.second != null) {
-			const first = data.first;
-			const second = data.second;
+		if (Array.isArray(data)) {
 			switch (optionView) {
 				case "30":
-					generateData(
-						first.slice(Math.max(first.length - 30)),
-						second.slice(Math.max(second.length - 30)),
-						type
-					);
+					generateData(data.slice(Math.max(data.length - 30)));
 					break;
 				case "7":
-					generateData(
-						first.slice(Math.max(first.length - 7)),
-						second.slice(Math.max(second.length - 7)),
-						type
-					);
+					generateData(data.slice(Math.max(data.length - 7)));
 					break;
 				default:
-					generateData(first, second, type);
+					generateData(data);
 					break;
 			}
 		}
-	}, [optionView, data, type]);
+	}, [optionView, data]);
 
-	const generateData = (first, second, type) => {
+	const generateData = (data) => {
 		const tmp = [];
-		first.forEach((element) => {
-			tmp.push({
-				category: "First",
-				date: moment.utc(element.x).format("DD/MM/YY"),
-				value: type === "all" ? element.z : element.y,
-			});
-		});
-		second.forEach((element) => {
-			tmp.push({
-				category: "Fully",
-				date: moment.utc(element.x).format("DD/MM/YY"),
-				value: type === "all" ? element.z : element.y,
-			});
+		data.forEach((element) => {
+			tmp.push(
+				{
+					category: "First",
+					date: moment.utc(element.date).format("DD/MM/YY"),
+					value: element.total_vaccinations,
+				},
+				{
+					category: "Fully",
+					date: moment.utc(element.date).format("DD/MM/YY"),
+					value: element.people_fully_vaccinated,
+				}
+			);
 		});
 		setDataSource(tmp);
 	};
@@ -101,11 +91,7 @@ export default function VNVaccineChart({ title, data, type }) {
 				<h1>{title}</h1>
 				<ViewSelector handleChangeOption={handleChangeOption} />
 			</div>
-			{type === "all" ? (
-				<Area style={{ paddingTop: "20px" }} {...config} />
-			) : (
-				<Column style={{ paddingTop: "20px" }} {...config} />
-			)}
+			<Line style={{ paddingTop: "20px" }} {...config} />
 		</div>
 	);
 }

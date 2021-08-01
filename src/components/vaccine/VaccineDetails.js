@@ -4,6 +4,7 @@ import syringe from "../../assets/images/syringe.png";
 import people from "../../assets/images/people.png";
 import { getWorldVaccine } from "../../apis/index";
 import VaccineChart from "./VaccineChart";
+import { COLORS } from "../../constaints/colors";
 
 export default function VaccineDetails({ data }) {
 	const [visible, setVisible] = useState(false);
@@ -47,7 +48,7 @@ export default function VaccineDetails({ data }) {
 						<p
 							className="vaccineDetail"
 							style={{
-								color: "#00BDD5",
+								color: COLORS.teal,
 								fontWeight: "bold",
 								fontSize: "0.6rem",
 							}}

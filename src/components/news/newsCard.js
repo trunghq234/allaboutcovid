@@ -25,6 +25,7 @@ export default function NewsCard({ data }) {
 				>
 					<img
 						alt={data.title}
+						style={{ borderRadius: "8px" }}
 						width={160}
 						height={160}
 						src={data.thumbnail_url}

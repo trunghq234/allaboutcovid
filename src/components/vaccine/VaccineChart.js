@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Area } from "@ant-design/charts";
+import { Line } from "@ant-design/charts";
 import { COLORS } from "../../constaints/colors";
 import moment from "moment";
 import ViewSelector from "../home/ViewSelector";
@@ -13,7 +13,7 @@ export default function VaccineChart({ title, data }) {
 	};
 
 	useEffect(() => {
-		if (data != null) {
+		if (Array.isArray(data)) {
 			switch (optionView) {
 				case "30":
 					generateData(data.slice(Math.max(data.length - 30)));
@@ -36,7 +36,7 @@ export default function VaccineChart({ title, data }) {
 					{
 						category: "At least one dose",
 						date: moment.utc(item.date).format("DD/MM/YY"),
-						value: item.people_vaccinated - item.people_fully_vaccinated,
+						value: item.people_vaccinated,
 					},
 					{
 						category: "Fully vaccinated",
@@ -93,7 +93,7 @@ export default function VaccineChart({ title, data }) {
 				<p />
 				<ViewSelector handleChangeOption={handleChangeOption} />
 			</div>
-			<Area style={{ paddingTop: "20px" }} {...config} />
+			<Line style={{ paddingTop: "20px" }} {...config} />
 		</div>
 	);
 }

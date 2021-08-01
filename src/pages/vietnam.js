@@ -3,7 +3,7 @@ import {
 	getHCMCases,
 	getProvincesData,
 	getVietNamCases,
-	getVietNamVaccine,
+	getWorldVaccine,
 } from "../apis";
 import DataTable from "../components/vietnam/DataTable";
 import { Row, Col, Card, Divider } from "antd";
@@ -11,7 +11,7 @@ import Chart from "../components/vietnam/Chart";
 import { hourConverter } from "../utils/dataFortmatter";
 import moment from "moment";
 import VaccineDisplay from "../components/vaccine/VaccineDisplay";
-import VNVaccineChart from "../components/vietnam/VNVaccineChart";
+import VaccineChart from "../components/vaccine/VaccineChart";
 
 export default function VietNam() {
 	// const [cases, setCases] = useState([]);
@@ -58,29 +58,26 @@ export default function VietNam() {
 	};
 
 	const fetchVaccine = () => {
-		getVietNamVaccine()
+		getWorldVaccine()
 			.then((res) => {
-				return res.data.data;
+				return res.data.find((item) => item.country === "Vietnam").data;
 			})
 			.then((res) => {
 				setVaccine([
 					{
 						title: "At least one dose",
-						total: res.first.total,
-						ratio: res.firstRatio,
+						total: res[res.length - 1].total_vaccinations,
+						ratio: res[res.length - 1].total_vaccinations_per_hundred,
 						color: "green",
 					},
 					{
 						title: "Fully vaccinated",
-						total: res.second.total,
-						ratio: res.secondRatio,
+						total: res[res.length - 1].people_fully_vaccinated,
+						ratio: res[res.length - 1].people_fully_vaccinated_per_hundred,
 						color: "teal",
 					},
 				]);
-				setVaccineHistory({
-					first: res.first.datas,
-					second: res.second.datas,
-				});
+				setVaccineHistory(res);
 			})
 			.catch((err) => console.log(err));
 	};
@@ -141,18 +138,9 @@ export default function VietNam() {
 				<VaccineDisplay data={vaccine} />
 				<div style={{ marginTop: "40px" }}>
 					<Row gutter={[16, 16]}>
-						<Col span={12}>
+						<Col span={24}>
 							<Card>
-								<VNVaccineChart type="all" title="Total" data={vaccineHistory} />
-							</Card>
-						</Col>
-						<Col span={12}>
-							<Card>
-								<VNVaccineChart
-									type="byday"
-									title="By day"
-									data={vaccineHistory}
-								/>
+								<VaccineChart title="Total" data={vaccineHistory} />
 							</Card>
 						</Col>
 					</Row>

@@ -1,19 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { getWorldVaccine } from "../apis";
+import SortSelector from "../components/vaccine/SortSelector";
 import VaccineDisplay from "../components/vaccine/VaccineDisplay";
 import VaccineTable from "../components/vaccine/VaccineTable";
 
 export default function Vaccine() {
 	const [worldData, setWorldData] = useState([]);
-	const [data, setData] = useState({});
+	const [data, setData] = useState([]);
+	const [sortOption, setSortOption] = useState("2");
+
+	const handleChange = (key) => {
+		setSortOption(key);
+		sort(key);
+	};
+	const sort = (sortOption) => {
+		switch (sortOption) {
+			case "1":
+				const tmp = data.sort((first, second) =>
+					first.country.localeCompare(second.country)
+				);
+				setData(tmp);
+				break;
+			case "3":
+				{
+					const tmp = data.sort(
+						(first, second) => -first.fullyRatio + second.fullyRatio
+					);
+					setData(tmp);
+				}
+				break;
+			default:
+				{
+					const tmp = data.sort(
+						(first, second) => -first.oneDose + second.oneDose
+					);
+					setData(tmp);
+				}
+				break;
+		}
+	};
 
 	const fetchData = () => {
 		getWorldVaccine()
 			.then((res) => {
 				const tmp = res.data.filter(
-					(item) => item.iso_code.substring(0, 4) !== "OWID"
+					(item) =>
+						item.iso_code.substring(0, 4) !== "OWID" &&
+						item.data[item.data.length - 1]
+							.people_fully_vaccinated_per_hundred < 100
 				);
-
 				const arrayCountry = [];
 				tmp.forEach((item) => {
 					const lastElement = item.data[item.data.length - 1];
@@ -57,7 +92,6 @@ export default function Vaccine() {
 			})
 			.catch((err) => console.log(err));
 	};
-
 	useEffect(() => {
 		fetchData();
 	}, []);
@@ -72,7 +106,10 @@ export default function Vaccine() {
 			</div>
 			<div className="block">
 				<div className="titleHolder">
-					<h1>World statistics</h1>
+					<div className="flex">
+						<h1>World statistics</h1>
+						<SortSelector sortOption={sortOption} handleChange={handleChange} />
+					</div>
 				</div>
 				<VaccineTable data={data} />
 			</div>

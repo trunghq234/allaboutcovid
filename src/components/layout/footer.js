@@ -1,4 +1,6 @@
 import React from "react";
+import { BackTop } from "antd";
+import { UpCircleOutlined } from "@ant-design/icons";
 
 export default function AppFooter() {
 	return (
@@ -15,6 +17,11 @@ export default function AppFooter() {
 						Trung Huỳnh
 					</a>
 				</div>
+				<BackTop>
+					<div className="goTop">
+						<UpCircleOutlined />
+					</div>
+				</BackTop>
 			</div>
 		</div>
 	);
