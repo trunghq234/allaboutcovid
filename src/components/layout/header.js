@@ -13,12 +13,7 @@ export default function AppHeader() {
 						All about COVID
 					</a>
 				</div>
-				<Menu
-					defaultSelectedKeys={["1"]}
-					style={{ minWidth: "340px" }}
-					theme="light"
-					mode="horizontal"
-				>
+				<Menu style={{ minWidth: "340px" }} theme="light" mode="horizontal">
 					<Menu.Item key="1">
 						<Link to="/">World</Link>
 					</Menu.Item>

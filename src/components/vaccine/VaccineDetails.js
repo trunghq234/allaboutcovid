@@ -15,7 +15,6 @@ export default function VaccineDetails({ data }) {
 			.then((res) => {
 				const tmp = res.data.find((item) => item.country === country);
 				setCountryData(tmp);
-				console.log(tmp);
 			})
 			.catch((err) => console.log(err));
 	};

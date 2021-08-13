@@ -5,11 +5,11 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/trunghuynh2304/AllAboutCovid"
+    "url": "https://github.com/akaijs/AllAboutCovid"
   },
   "author": {
     "name": "Trung Huỳnh",
-    "url": "https://trunghuynh2304.github.io/"
+    "url": "https://akaijs.github.io/"
   },
   "dependencies": {
     "@ant-design/charts": "^1.2.2",
@@ -19,6 +19,7 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-country-flag": "^2.3.1",
+    "react-countup": "^5.2.0",
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",

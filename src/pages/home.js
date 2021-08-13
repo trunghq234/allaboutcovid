@@ -40,6 +40,7 @@ export default function AppWorld() {
 
 	const handleChange = (key) => {
 		setSelectedCountry(key);
+		console.log(key);
 	};
 	const handleChangeOption = (e) => {
 		setOptionView(e.target.value);
