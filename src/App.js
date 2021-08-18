@@ -9,6 +9,11 @@ import AppNews from "./pages/news";
 import AppHeader from "./components/layout/header";
 import AppFooter from "./components/layout/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ReactGA from "react-ga";
+
+const trackingId = "G-M03Q5WTTS3";
+ReactGA.initialize(trackingId);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const { Header, Footer, Content } = Layout;
 
