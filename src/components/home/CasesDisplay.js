@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card, Col, Row } from "antd";
 import { getGlobalReport } from "../../apis";
-import CountUp from "react-countup";
 
 export default function CasesDisplay() {
 	const [data, setData] = useState([]);
@@ -64,21 +63,9 @@ export default function CasesDisplay() {
 						>
 							<Card className="casesDisplay">
 								<h3>{item.title}</h3>
-								<h2 className={item.color}>
-									<CountUp
-										end={item.num}
-										duration={0.5}
-										formattingFn={(n) => n.toLocaleString()}
-									/>
-								</h2>
+								<h2 className={item.color}>{item.num.toLocaleString()}</h2>
 								<p className={item.color}>
-									<CountUp
-										end={item.diff}
-										duration={0.5}
-										formattingFn={(n) =>
-											item.sign.toString().concat(n.toLocaleString())
-										}
-									/>
+									{item.sign.toString().concat(item.diff.toLocaleString())}
 								</p>
 							</Card>
 						</Col>

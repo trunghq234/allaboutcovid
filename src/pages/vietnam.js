@@ -135,7 +135,7 @@ export default function VietNam() {
 				<div className="titleHolder">
 					<h1>Vaccine statistics</h1>
 				</div>
-				<VaccineDisplay data={vaccine} />
+				{/* <VaccineDisplay data={vaccine} /> */}
 				<div style={{ marginTop: "40px" }}>
 					<Row gutter={[16, 16]}>
 						<Col span={24}>

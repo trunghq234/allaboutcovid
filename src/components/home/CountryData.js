@@ -1,6 +1,5 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
-import CountUp from "react-countup";
 
 export default function CountryData({ data }) {
 	const [dataDisplay, setDataDisplay] = useState([]);
@@ -54,11 +53,7 @@ export default function CountryData({ data }) {
 						<div className="number">
 							<p>{item.title}</p>
 							<h3 className={item.color}>
-								<CountUp
-									end={item.number ? item.number : "NaN"}
-									duration={1}
-									formattingFn={(n) => n.toLocaleString()}
-								/>
+								{item.number ? item.number.toLocaleString() : "NaN"}
 							</h3>
 						</div>
 					</div>

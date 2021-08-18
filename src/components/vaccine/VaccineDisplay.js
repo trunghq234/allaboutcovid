@@ -1,29 +1,27 @@
-import { Card, Col, Row } from "antd";
-import React from "react";
-import CountUp from "react-countup";
+import { Card, Col } from "antd";
+import React, { useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 
 export default function VaccineDisplay({ data }) {
+	const [item, setItem] = useState({});
+
+	useEffect(() => {
+		if (data) {
+			setItem({
+				title: data.title,
+				total: data.total.toLocaleString(),
+				ratio: data.ratio.toFixed(2) + " %",
+				color: data.color,
+			});
+		}
+	}, [data]);
 	return (
-		<div>
-			<Row gutter={[16, 16]}>
-				{data.map((item, index) => {
-					return (
-						<Col key={index} span={12}>
-							<Card className="vaccineDisplay">
-								<h1>{item.title}</h1>
-								<h2 className={item.color}>
-									<CountUp
-										end={item.total}
-										duration={1}
-										formattingFn={(n) => n.toLocaleString()}
-									/>
-								</h2>
-								<p className={item.color}>{item.ratio.toFixed(2) + " %"}</p>
-							</Card>
-						</Col>
-					);
-				})}
-			</Row>
-		</div>
+		<Col xs={{span: 24}} sm={{span: 12}} >
+			<Card className="vaccineDisplay">
+				<h1>{item.title || <Skeleton />}</h1>
+				<h2 className={item.color}>{item.total || <Skeleton />}</h2>
+				<p className={item.color}>{item.ratio || <Skeleton />}</p>
+			</Card>
+		</Col>
 	);
 }

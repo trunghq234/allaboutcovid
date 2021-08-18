@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { getWorldVaccine } from "../apis";
+import { Row } from "antd";
 import SortSelector from "../components/vaccine/SortSelector";
 import VaccineDisplay from "../components/vaccine/VaccineDisplay";
 import VaccineTable from "../components/vaccine/VaccineTable";
+import CardSkeleton from "../components/vaccine/CardSkeleton";
 
 export default function Vaccine() {
 	const [worldData, setWorldData] = useState([]);
 	const [data, setData] = useState([]);
 	const [sortOption, setSortOption] = useState("2");
+	const [loading, setLoading] = useState(true);
+	const [loadingTable, setLoadingTable] = useState(true);
+	const array = [];
+	array.length = 9;
 
 	const handleChange = (key) => {
 		setSortOption(key);
@@ -71,10 +77,12 @@ export default function Vaccine() {
 				});
 				arrayCountry.sort((first, second) => -first.oneDose + second.oneDose);
 				setData(arrayCountry);
+				setLoadingTable(false);
 				const worldData = res.data.find((item) => item.country === "World");
 				return worldData.data.pop();
 			})
 			.then((res) => {
+				setLoading(false);
 				setWorldData([
 					{
 						title: "At least one dose",
@@ -102,7 +110,19 @@ export default function Vaccine() {
 				<div className="titleHolder">
 					<h1>World statistics</h1>
 				</div>
-				<VaccineDisplay data={worldData} />
+				<Row gutter={[16, 16]}>
+					{loading ? (
+						<>
+							<CardSkeleton xs={24} sm={12} md={12} lg={12} count={3} />
+							<CardSkeleton xs={24} sm={12} md={12} lg={12} count={3} />
+						</>
+					) : (
+						<div></div>
+					)}
+					{worldData.map((item, index) => (
+						<VaccineDisplay key={index} data={item} />
+					))}
+				</Row>
 			</div>
 			<div className="block">
 				<div className="titleHolder">
@@ -111,6 +131,23 @@ export default function Vaccine() {
 						<SortSelector sortOption={sortOption} handleChange={handleChange} />
 					</div>
 				</div>
+				<Row gutter={[16, 16]}>
+					{loadingTable ? (
+						<>
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+							<CardSkeleton xs={24} sm={24} md={12} lg={8} count={2} />
+						</>
+					) : (
+						<></>
+					)}{" "}
+				</Row>
 				<VaccineTable data={data} />
 			</div>
 		</div>

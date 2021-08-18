@@ -8,7 +8,13 @@ export default function VaccineTable({ data }) {
 			{Array.isArray(data) &&
 				data.map((item, index) => {
 					return (
-						<Col key={index} span={8}>
+						<Col
+							key={index}
+							xs={{ span: 24 }}
+							sm={{ span: 24 }}
+							md={{ span: 12 }}
+							lg={{ span: 8 }}
+						>
 							<VaccineDetails data={item} />
 						</Col>
 					);
