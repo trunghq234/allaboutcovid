@@ -1,6 +1,5 @@
 import { Space } from "antd";
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, useEffect } from "react";
 import { getNews } from "../apis";
 import NewsCard from "../components/news/newsCard";
 import CardSkeleton from "../components/vaccine/CardSkeleton";
@@ -9,7 +8,7 @@ export default function AppNews() {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	const fetchNews = () => {
+	useEffect(() => {
 		getNews()
 			.then((res) => {
 				setData(
@@ -20,10 +19,6 @@ export default function AppNews() {
 				setLoading(false);
 			})
 			.catch((err) => console.log(err));
-	};
-
-	useEffect(() => {
-		fetchNews();
 	}, []);
 
 	return (
