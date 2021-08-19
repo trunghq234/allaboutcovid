@@ -81,7 +81,10 @@ export default function AppWorld() {
 					</Col>
 					<Col xs={{ span: 24 }} lg={{ span: 18 }}>
 						<Card>
-							<ViewSelector handleChangeOption={handleChangeOption} />
+							<div className="flex">
+								<p></p>
+								<ViewSelector handleChangeOption={handleChangeOption} />
+							</div>
 							<CountryChart
 								historicData={historicData}
 								optionView={optionView}

@@ -64,7 +64,7 @@ export default function Chart({ title, data }) {
 				};
 			},
 		},
-		height: 478,
+		autoFit: true,
 		color: COLORS.orange,
 		legend: { position: "top-left" },
 		smooth: true,
@@ -78,7 +78,7 @@ export default function Chart({ title, data }) {
 	return (
 		<div>
 			<div className="flex">
-				<h1>{title}</h1>
+				<h1 className="titleChart">{title}</h1>
 				<ViewSelector handleChangeOption={handleChangeOption} />
 			</div>
 			<Line style={{ paddingTop: "20px" }} {...config} />

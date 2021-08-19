@@ -14,7 +14,6 @@ import VaccineDisplay from "../components/vaccine/VaccineDisplay";
 import VaccineChart from "../components/vaccine/VaccineChart";
 
 export default function VietNam() {
-	// const [cases, setCases] = useState([]);
 	const [casesByDay, setCasesByDay] = useState([]);
 	const [provincesData, setProvincesData] = useState([]);
 	const [hcmCases, setHcmCases] = useState([]);
@@ -102,14 +101,14 @@ export default function VietNam() {
 					<h1>Detail statistics</h1>
 				</div>
 				<Row gutter={[16, 16]}>
-					<Col span={10}>
+					<Col xs={{ span: 24 }} md={{ span: 10 }}>
 						<Card>
 							<DataTable data={provincesData} />
 						</Card>
 					</Col>
-					<Col span={14}>
+					<Col xs={{ span: 24 }} md={{ span: 14 }}>
 						<Card>
-							<Chart title="Confirmed cases by day" data={casesByDay} />
+							<Chart key={1} title="Confirmed cases by day" data={casesByDay} />
 						</Card>
 					</Col>
 				</Row>
@@ -119,14 +118,18 @@ export default function VietNam() {
 					<h1>HCM statistics</h1>
 				</div>
 				<Row gutter={[16, 16]}>
-					<Col span={12}>
+					<Col xs={{ span: 24 }} md={{ span: 12 }}>
 						<Card>
-							<Chart title="Confirmed cases" data={hcmCases} />
+							<Chart key={2} title="Confirmed cases" data={hcmCases} />
 						</Card>
 					</Col>
-					<Col span={12}>
+					<Col xs={{ span: 24 }} md={{ span: 12 }}>
 						<Card>
-							<Chart title="Confirmed cases by day" data={hcmCasesByDay} />
+							<Chart
+								key={3}
+								title="Confirmed cases by day"
+								data={hcmCasesByDay}
+							/>
 						</Card>
 					</Col>
 				</Row>
@@ -135,6 +138,11 @@ export default function VietNam() {
 				<div className="titleHolder">
 					<h1>Vaccine statistics</h1>
 				</div>
+				<Row gutter={[16, 16]}>
+					{vaccine.map((item, index) => (
+						<VaccineDisplay key={index} data={item} />
+					))}
+				</Row>
 				{/* <VaccineDisplay data={vaccine} /> */}
 				<div style={{ marginTop: "40px" }}>
 					<Row gutter={[16, 16]}>

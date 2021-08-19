@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@ant-design/charts": "^1.2.2",
-    "@ant-design/icons": "^4.6.2",
+    "@ant-design/icons": "^4.6.3",
     "antd": "^4.16.7",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
