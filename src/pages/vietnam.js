@@ -41,7 +41,9 @@ export default function VietNam() {
 				const now = moment().utc(7).hour();
 				const diff = now - time;
 				setLastUpdated(
-					`Last updated ${diff} ${diff < 2 ? "hour" : "hours"} ago`
+					`Last updated ${diff < 0 ? diff + 24 : diff} ${
+						diff < 2 ? "hour" : "hours"
+					} ago`
 				);
 			})
 			.catch((err) => console.log(err));
@@ -92,10 +94,12 @@ export default function VietNam() {
 		<div className="container-fluid">
 			{/* <CasesDisplay cases={cases} /> */}
 			{/* <p className="lastUpdated">{lastUpdated}</p> */}
-			<Divider style={{ fontSize: "20px", marginTop: "40px" }}>
+			<Divider
+				style={{ fontSize: "2rem", fontWeight: "600", marginTop: "40px" }}
+			>
 				A fourth wave of COVID-19
 			</Divider>
-			<p>{lastUpdated}</p>
+			<p style={{ textAlign: "center" }}>{lastUpdated}</p>
 			<div className="block">
 				<div className="titleHolder">
 					<h1>Detail statistics</h1>

@@ -66,7 +66,7 @@ export default function AppHeader() {
 							<Link to="/">World</Link>
 						</Menu.Item>
 						<Menu.Item key="vietnam">
-							<Link to="/vietnam">VietNam</Link>
+							<Link to="/vietnam">Viet Nam</Link>
 						</Menu.Item>
 						<Menu.Item key="vaccine">
 							<Link to="/vaccine">Vaccine</Link>

@@ -1,6 +1,6 @@
 import "./App.css";
 import "antd/dist/antd.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout } from "antd";
 import AppWorld from "./pages/home";
 import VietNam from "./pages/vietnam";
@@ -11,13 +11,14 @@ import AppFooter from "./components/layout/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ReactGA from "react-ga";
 
-const trackingId = "G-M03Q5WTTS3";
-ReactGA.initialize(trackingId);
-ReactGA.pageview(window.location.pathname + window.location.search);
-
 const { Header, Footer, Content } = Layout;
 
 function App() {
+	useEffect(() => {
+		const trackingId = "G-M03Q5WTTS3";
+		ReactGA.initialize(trackingId);
+		ReactGA.pageview(window.location.pathname + window.location.search);
+	}, []);
 	return (
 		<Router>
 			<Layout className="mainLayout">
