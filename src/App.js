@@ -15,7 +15,7 @@ const { Header, Footer, Content } = Layout;
 
 function App() {
 	useEffect(() => {
-		const trackingId = "G-M03Q5WTTS3";
+		const trackingId = "G-6MLS770X5M";
 		ReactGA.initialize(trackingId);
 		ReactGA.pageview(window.location.pathname + window.location.search);
 	}, []);
