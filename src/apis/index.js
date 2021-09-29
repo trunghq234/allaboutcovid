@@ -1,25 +1,25 @@
-import axios from "axios";
+import axios from 'axios';
 import {
-	HCM_CASES,
-	PROVINCES_CASES,
-	VIETNAM_CASES,
-	VNEXPRESS_NEWS,
-	GLOBAL_REPORT,
-	COUNTRY_DATA,
-	HISTORICAL_DATA,
-	COUNTRIES_DATA,
-	VIETNAM_VACCINE,
-	WORLD_VACCINE,
-} from "../constaints/sources";
-import { axiosConfig } from "./config";
+  HCM_CASES,
+  PROVINCES_CASES,
+  VIETNAM_CASES,
+  VNEXPRESS_NEWS,
+  GLOBAL_REPORT,
+  COUNTRY_DATA,
+  HISTORICAL_DATA,
+  COUNTRIES_DATA,
+  VIETNAM_VACCINE,
+  WORLD_VACCINE,
+} from '../constaints/sources';
+import { axiosConfig } from './config';
 
 export const getGlobalReport = () => axios.get(GLOBAL_REPORT);
 
 export const getCountryData = (country) =>
-	axios.get(`${COUNTRY_DATA}${country}`);
+  axios.get(`${COUNTRY_DATA}${country}`);
 
 export const getCountryHistoricalData = (country) =>
-	axios.get(HISTORICAL_DATA + `${country}`, axiosConfig);
+  axios.get(HISTORICAL_DATA + `${country}`, axiosConfig);
 
 export const getAllCountriesData = () => axios.get(COUNTRIES_DATA, axiosConfig);
 
