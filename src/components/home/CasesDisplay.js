@@ -25,7 +25,7 @@ export default function CasesDisplay() {
               res.data.todayDeaths -
               res.data.todayRecovered,
             color: 'orange',
-            sign: res.data.todayCases > res.data.todayRecovered ? '+' : '-',
+            sign: res.data.todayCases > res.data.todayRecovered ? '+' : '',
           },
           {
             key: '3',
