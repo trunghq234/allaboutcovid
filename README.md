@@ -8,4 +8,4 @@ Please consider giving this project a ⭐ on Github and sharing it with your fri
 
 ## Feedback
 
-Create a feedback in ![Issues](https://github.com/akaijs/allaboutcovid/issues) section, each of your feedback will help us improve the app. Thank you for your assistance!
+Create a feedback in [Issues](https://github.com/akaijs/allaboutcovid/issues) section, each of your feedback will help us improve the app. Thank you for your assistance!
