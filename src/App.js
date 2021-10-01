@@ -10,7 +10,6 @@ import AppHeader from './components/layout/header';
 import AppFooter from './components/layout/footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactGA from 'react-ga';
-import MetaTags from 'react-meta-tags';
 
 const { Header, Footer, Content } = Layout;
 
