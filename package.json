@@ -1,6 +1,6 @@
 {
   "name": "all-about-covid",
-  "description": "An site dedicated to Covid-19",
+  "description": "A website dedicated to providing global information about the COVID-19 pandemic.",
   "version": "0.1.0",
   "private": true,
   "repository": {
@@ -17,13 +17,11 @@
     "antd": "^4.16.7",
     "axios": "^0.21.1",
     "moment": "^2.29.1",
-    "prettier": "^2.4.1",
     "react": "^17.0.2",
     "react-country-flag": "^2.3.1",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
     "react-loading-skeleton": "^2.2.0",
-    "react-meta-tags": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "tslib": "^2.3.0",
@@ -52,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
   }
 }
