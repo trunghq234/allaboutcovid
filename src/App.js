@@ -1,6 +1,6 @@
 import './App.css';
 import 'antd/dist/antd.css';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 import AppWorld from './pages/home';
 import VietNam from './pages/vietnam';
@@ -9,49 +9,42 @@ import AppNews from './pages/news';
 import AppHeader from './components/layout/header';
 import AppFooter from './components/layout/footer';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ReactGA from 'react-ga';
-
+import GA4React from 'ga-4-react';
 const { Header, Footer, Content } = Layout;
 
+const trackingId = 'G-6MLS770X5M';
+try {
+  setTimeout((_) => {
+    const ga4react = new GA4React(trackingId);
+    ga4react.initialize();
+  }, 1000);
+} catch (err) {
+  console.log(err);
+}
+
 function App() {
-  const trackingId = 'G-6MLS770X5M';
-
-  useEffect(() => {
-    ReactGA.initialize(trackingId, {
-      debug: true,
-      gaOptions: { cookieDomain: 'none' },
-    });
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
-
   return (
     <Router>
       <Layout className="mainLayout">
         <Header>
           <AppHeader />
         </Header>
-        <Switch>
-          <Route exact path="/">
-            <Content>
+        <Content>
+          <Switch>
+            <Route exact to="/">
               <AppWorld />
-            </Content>
-          </Route>
-          <Route exact path="/vietnam">
-            <Content>
+            </Route>
+            <Route exact to="/vietnam">
               <VietNam />
-            </Content>
-          </Route>
-          <Route exact path="/vaccine">
-            <Content>
+            </Route>
+            <Route exact to="/vaccine">
               <Vaccine />
-            </Content>
-          </Route>
-          <Route exact path="/news">
-            <Content>
+            </Route>
+            <Route exact to="/news">
               <AppNews />
-            </Content>
-          </Route>
-        </Switch>
+            </Route>
+          </Switch>
+        </Content>
         <Footer>
           <AppFooter />
         </Footer>

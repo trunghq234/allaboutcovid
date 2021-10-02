@@ -16,6 +16,7 @@
     "@ant-design/icons": "^4.6.3",
     "antd": "^4.16.7",
     "axios": "^0.21.1",
+    "ga-4-react": "^0.1.281",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-country-flag": "^2.3.1",
