@@ -17,7 +17,7 @@ try {
   setTimeout((_) => {
     const ga4react = new GA4React(trackingId);
     ga4react.initialize();
-  }, 1000);
+  }, 4000);
 } catch (err) {
   console.log(err);
 }
@@ -31,16 +31,16 @@ function App() {
         </Header>
         <Content>
           <Switch>
-            <Route exact to="/">
+            <Route exact path="/">
               <AppWorld />
             </Route>
-            <Route exact to="/vietnam">
+            <Route exact path="/vietnam">
               <VietNam />
             </Route>
-            <Route exact to="/vaccine">
+            <Route exact path="/vaccine">
               <Vaccine />
             </Route>
-            <Route exact to="/news">
+            <Route exact path="/news">
               <AppNews />
             </Route>
           </Switch>
